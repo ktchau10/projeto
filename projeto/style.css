@@ -1,0 +1,313 @@
+:root {
+    --ufopa-green: #004d40;
+    --ufopa-light: #e0f2f1;
+    --ufopa-accent: #00796b;
+    --text-dark: #2c3e50;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: var(--text-dark);
+    padding-top: 70px; /* IMPORTANTE: Espaço para a barra fixa */
+}
+
+/* HERO SECTION (TOPO VERDE) */
+.hero-section {
+    background: linear-gradient(135deg, var(--ufopa-green) 0%, #00695c 100%);
+    color: white;
+    padding: 6rem 0 8rem 0; /* Padding grande para dar altura */
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 450px; /* Garante altura mínima */
+}
+
+/* Barra de Busca */
+.search-box {
+    width: 100%;
+    max-width: 650px;
+    margin-top: 2rem;
+    position: relative;
+}
+
+.search-input {
+    border-radius: 50px;
+    padding: 18px 50px 18px 30px;
+    border: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    width: 100%;
+    font-size: 1.2rem;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ufopa-green);
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+/* CARDS DE PERFIL (FLUTUANTES) */
+.cards-container {
+    margin-top: -60px; /* Faz os cards subirem na área verde */
+    position: relative;
+    z-index: 10;
+    padding-bottom: 2rem;
+}
+
+.profile-card {
+    background: white;
+    border: none;
+    border-radius: 12px;
+    padding: 25px 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-bottom: 4px solid transparent;
+    height: 100%;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.profile-card.active {
+    border-bottom-color: var(--ufopa-accent);
+    background-color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 77, 64, 0.2);
+    transform: translateY(-3px);
+}
+
+.profile-icon {
+    font-size: 2.5rem;
+    color: var(--ufopa-green);
+    margin-bottom: 15px;
+}
+
+/* ACORDEÕES E CONTEÚDO */
+.accordion-item {
+    border: none;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--ufopa-light);
+    color: var(--ufopa-green);
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+}
+
+.topico-title {
+    color: var(--ufopa-green);
+    border-bottom: 3px solid var(--ufopa-light);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.manual-img-placeholder {
+    background-color: #f1f3f5;
+    border: 2px dashed #dee2e6;
+    color: #6c757d;
+    padding: 40px;
+    text-align: center;
+    margin: 25px 0;
+    border-radius: 8px;
+}
+
+.caminho-sistema {
+    background-color: #fff3cd;
+    padding: 10px 15px;
+    border-radius: 6px;
+    border-left: 5px solid #ffc107;
+    font-family: 'Consolas', monospace;
+    font-size: 0.95em;
+    display: block;
+    margin: 15px 0;
+    color: #664d03;
+}
+
+/* MENU LATERAL */
+.offcanvas-header {
+    background-color: var(--ufopa-green);
+    color: white;
+}
+.btn-close-white { filter: invert(1); }
+
+.nav-link-custom {
+    color: #444;
+    padding: 15px 20px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #eee;
+    transition: all 0.2s;
+}
+.nav-link-custom:hover {
+    background-color: var(--ufopa-light);
+    color: var(--ufopa-green);
+    padding-left: 25px;
+}
+
+/* FOOTER */
+footer {
+    background-color: #212529;
+    color: white;
+    margin-top: 5rem;
+}
+
+/* --- NOVAS REGRAS: ORGANIZAÇÃO DOS PRINTS (Miniaturas) --- */
+.manual-print {
+    max-height: 200px; /* Define uma altura máxima para organizar */
+    width: auto;       /* Mantém a proporção correta */
+    cursor: zoom-in;   /* Ícone de lupa ao passar o mouse */
+    transition: all 0.3s ease;
+    object-fit: contain;
+    background-color: #fff;
+    margin: 10px 0;    /* Espaçamento vertical */
+    display: inline-block; /* Garante que respeite as margens */
+}
+
+.manual-print:hover {
+    transform: scale(1.02); /* Leve efeito de zoom ao passar o mouse */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
+}
+
+/* --- LIGHTBOX (Janela de Visualização em Tela Cheia) --- */
+.lightbox-modal {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    z-index: 10000; /* Fica acima de tudo, inclusive navbar */
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.85); /* Fundo cinza escuro/preto transparente */
+    backdrop-filter: blur(5px); /* Desfoque no fundo */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-modal.show {
+    opacity: 1;
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 4px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+    animation: zoomIn 0.3s;
+    object-fit: contain; /* Garante que a imagem caiba na tela */
+}
+
+@keyframes zoomIn {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* Botão de Fechar */
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Legenda da imagem no Lightbox */
+.lightbox-caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: auto;
+    font-size: 1.1rem;
+}
+
+/* --- TAGS POPULARES (Chips) --- */
+.popular-tags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    animation: fadeInUp 1s ease;
+}
+
+.badge-popular {
+    background-color: rgba(255, 255, 255, 0.15); /* Fundo branco transparente */
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: inline-flex;
+    align-items: center;
+}
+
+.badge-popular:hover {
+    background-color: #fff; /* Fica branco sólido ao passar o mouse */
+    color: var(--ufopa-green); /* Texto fica verde */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- CONFIGURAÇÃO DA LOGO --- */
+
+.logo-navbar {
+    height: auto;       /* Mantém a proporção da largura automaticamente */
+    max-height: 50px;   /* Tamanho ideal para Desktop (Navbar de 70px) */
+    width: auto;
+    transition: all 0.3s ease; /* Suaviza a mudança de tamanho se a tela mudar */
+}
+
+/* Ajuste para telas menores (Celulares) */
+@media (max-width: 768px) {
+    .logo-navbar {
+        max-height: 40px; /* Reduz um pouco para não ocupar muito espaço no mobile */
+    }
+    
+    /* Opcional: Ajusta levemente o tamanho do texto "Módulo NEE" no mobile */
+    .navbar-brand {
+        font-size: 1.3rem !important; 
+    }
+}
