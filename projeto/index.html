@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual do Módulo NEE - UFOPA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top" style="height: 70px;">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-outline-success border-0 me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+                    <i class="bi bi-list fs-2"></i>
+                </button>
+                
+                <a class="navbar-brand fw-bold text-success fs-4 d-flex align-items-center" href="#">
+                    <img src="logo/logo.png" alt="Brasão UFOPA" class="logo-navbar me-2">
+                    Módulo NEE
+                </a>
+            </div>
+            <span class="text-muted d-none d-md-block border-start ps-3 ms-2">Universidade Federal do Oeste do Pará</span>
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
+        <div class="offcanvas-header bg-success text-white">
+            <h5 class="offcanvas-title"><i class="bi bi-book-half me-2"></i>Sumário do Guia</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            
+            <a href="#intro" class="sidebar-btn collapsed text-decoration-none" onclick="filtrarPerfil('gestor', document.querySelectorAll('.profile-card')[1])">
+                <span><i class="bi bi-house-door me-2"></i>Acesso Inicial</span>
+            </a>
+
+            <button class="sidebar-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menuGestor">
+                <span><i class="bi bi-gear-fill me-2"></i>Gestor (PROGES)</span>
+                <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="collapse" id="menuGestor">
+                <a href="#tabAdmin" class="sidebar-link" onclick="filtrarPerfil('gestor', document.querySelectorAll('.profile-card')[1])">Aba Administração</a>
+                <a href="#tabAluno" class="sidebar-link" onclick="filtrarPerfil('gestor', document.querySelectorAll('.profile-card')[1])">Aba Aluno</a>
+                <a href="#tabRel" class="sidebar-link" onclick="filtrarPerfil('gestor', document.querySelectorAll('.profile-card')[1])">Aba Relatórios / Consultas</a>
+                <a href="#tabLab" class="sidebar-link" onclick="filtrarPerfil('gestor', document.querySelectorAll('.profile-card')[1])">Aba Laboratório</a>
+                <a href="#tabApoio" class="sidebar-link" onclick="filtrarPerfil('gestor', document.querySelectorAll('.profile-card')[1])">Aba Apoio</a>
+                <a href="#tabAcomp" class="sidebar-link" onclick="filtrarPerfil('gestor', document.querySelectorAll('.profile-card')[1])">Aba Acompanhamento</a>
+            </div>
+
+            <button class="sidebar-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menuCoord">
+                <span><i class="bi bi-briefcase-fill me-2"></i>Coordenador</span>
+                <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="collapse" id="menuCoord">
+                <a href="#cCoord1" class="sidebar-link" onclick="filtrarPerfil('coordenador', document.querySelectorAll('.profile-card')[2])">1. Acesso à Funcionalidade</a>
+                <a href="#cCoord2" class="sidebar-link" onclick="filtrarPerfil('coordenador', document.querySelectorAll('.profile-card')[2])">2. Gerenciamento de Solicitações</a>
+            </div>
+
+            <button class="sidebar-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menuDocente">
+                <span><i class="bi bi-easel-fill me-2"></i>Docente</span>
+                <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="collapse" id="menuDocente">
+                <a href="#cDoc1" class="sidebar-link" onclick="filtrarPerfil('docente', document.querySelectorAll('.profile-card')[3])">1. Ciência e Notificação</a>
+                <a href="#cDoc2" class="sidebar-link" onclick="filtrarPerfil('docente', document.querySelectorAll('.profile-card')[3])">2. Parecer Técnico e Detalhes</a>
+            </div>
+
+            <button class="sidebar-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menuDiscente">
+                <span><i class="bi bi-mortarboard-fill me-2"></i>Discente</span>
+                <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="collapse" id="menuDiscente">
+                <a href="#cDisc1" class="sidebar-link" onclick="filtrarPerfil('discente', document.querySelectorAll('.profile-card')[4])">1. Onde encontrar</a>
+                <a href="#cDisc2" class="sidebar-link" onclick="filtrarPerfil('discente', document.querySelectorAll('.profile-card')[4])">2. Preenchimento da Solicitação</a>
+                <a href="#cDisc3" class="sidebar-link" onclick="filtrarPerfil('discente', document.querySelectorAll('.profile-card')[4])">3. Acompanhamento</a>
+                <a href="#cDisc4" class="sidebar-link" onclick="filtrarPerfil('discente', document.querySelectorAll('.profile-card')[4])">4. Entrar em Contato</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-3">Como podemos ajudar?</h1>
+                    <p class="lead mb-4 fs-4 opacity-75">Manuais organizados por perfil e funcionalidade</p>
+                    
+                    <div class="search-box mx-auto mb-3">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Digite o que procura (ex: solicitar apoio, parecer, status)...">
+                        <i class="bi bi-search search-icon"></i>
+                    </div>
+
+                    <div class="text-center d-none d-md-block">
+                        <small class="text-white-50 me-2">Pesquisas populares:</small>
+                        <a href="#cDisc1" onclick="filtrarPerfil('discente', document.querySelectorAll('.profile-card')[4])" class="tag-popular">Solicitar Apoio</a>
+                        <a href="#tabLab" onclick="filtrarPerfil('gestor', document.querySelectorAll('.profile-card')[1])" class="tag-popular">Cadastrar Acompanhante</a>
+                        <a href="#cDoc2" onclick="filtrarPerfil('docente', document.querySelectorAll('.profile-card')[3])" class="tag-popular">Parecer Técnico</a>
+                        <a href="#tabRel" onclick="filtrarPerfil('gestor', document.querySelectorAll('.profile-card')[1])" class="tag-popular">Relatórios</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container cards-container">
+        <div class="row justify-content-center g-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
+            <div class="col">
+                <div class="profile-card active" onclick="filtrarPerfil('todos', this)">
+                    <div class="profile-icon"><i class="bi bi-grid-fill"></i></div>
+                    <h6 class="mb-0 fw-bold">Visão Geral</h6>
+                </div>
+            </div>
+            <div class="col">
+                <div class="profile-card" onclick="filtrarPerfil('gestor', this)">
+                    <div class="profile-icon"><i class="bi bi-gear-fill"></i></div>
+                    <h6 class="mb-0 fw-bold">Gestor (PROGES)</h6>
+                    <small class="text-muted d-block mt-1" style="font-size: 0.8rem;">Administração</small>
+                </div>
+            </div>
+            <div class="col">
+                <div class="profile-card" onclick="filtrarPerfil('coordenador', this)">
+                    <div class="profile-icon"><i class="bi bi-briefcase-fill"></i></div>
+                    <h6 class="mb-0 fw-bold">Coordenador</h6>
+                    <small class="text-muted d-block mt-1" style="font-size: 0.8rem;">Acadêmico</small>
+                </div>
+            </div>
+            <div class="col">
+                <div class="profile-card" onclick="filtrarPerfil('docente', this)">
+                    <div class="profile-icon"><i class="bi bi-easel-fill"></i></div>
+                    <h6 class="mb-0 fw-bold">Docente</h6>
+                    <small class="text-muted d-block mt-1" style="font-size: 0.8rem;">Professor</small>
+                </div>
+            </div>
+            <div class="col">
+                <div class="profile-card" onclick="filtrarPerfil('discente', this)">
+                    <div class="profile-icon"><i class="bi bi-mortarboard-fill"></i></div>
+                    <h6 class="mb-0 fw-bold">Discente</h6>
+                    <small class="text-muted d-block mt-1" style="font-size: 0.8rem;">Aluno</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5 pb-5">
+
+        <div class="mb-5 topico-manual perfil-gestor" id="intro">
+            <h3 class="topico-title text-uppercase"><i class="bi bi-info-circle me-2"></i>Apresentação e Acesso</h3>
+            <div class="accordion" id="accIntro">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c1">
+                            Como acessar o Módulo NEE?
+                        </button>
+                    </h2>
+                    <div id="c1" class="accordion-collapse collapse show" data-bs-parent="#accIntro">
+                        <div class="accordion-body">
+                            <p>O Módulo de Necessidades Educacionais Especiais (NEE) é a ferramenta institucional da UFOPA desenvolvida para centralizar o acompanhamento pedagógico e administrativo dos discentes que possuem algum tipo de deficiência, transtorno global do desenvolvimento ou altas habilidades.</p>
+                            <p><strong>Caminho:</strong> Faça login no SIGAA → Clique no ícone de "Módulos" (Cubo no topo direito) → Selecione <strong>NEE - Necessidades Educacionais Especiais</strong>.</p>
+                            <div class="text-center my-4">
+                                <img src="print/01-acesso-modulos.png" class="img-fluid rounded border shadow-sm manual-print" alt="Tela de Acesso aos Módulos">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-5 topico-manual perfil-gestor" id="gestor-conteudo">
+            <h3 class="topico-title text-success"><i class="bi bi-gear-fill me-2"></i>Área de Gestão (PROGES)</h3>
+            <p class="text-muted mb-4">Abaixo estão detalhadas todas as funcionalidades do módulo, com explicações e detalhamento de telas conforme o Manual de Gestão.</p>
+
+            <div class="accordion" id="accGestor">
+
+                <div class="accordion-item" id="tabAdmin">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button fw-bold text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#cAdmin1">
+                            <i class="bi bi-sliders me-2"></i>Administração
+                        </button>
+                    </h2>
+                    <div id="cAdmin1" class="accordion-collapse collapse show" data-bs-parent="#accGestor">
+                        <div class="accordion-body">
+                            
+                            <h5 class="text-success fw-bold mt-3">Cadastrar Tipos de Necessidades Educacionais Específicas</h5>
+                            <p>Esta funcionalidade permite registrar novas categorias de deficiências, transtornos globais do desenvolvimento ou altas habilidades no banco de dados do sistema.</p>
+                            <p><strong>Caminho:</strong> Aba Administração → Tipos de Necessidades Educacionais Específicas → Cadastrar</p>
+                            <div class="text-center my-3 p-3 border rounded bg-light">
+                                <img src="print/02-cadastrar-necessidade.png" class="img-fluid rounded shadow-sm manual-print" alt="Tela de Cadastro de Necessidade">
+                            </div>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Descrição:</strong> Neste campo, você deve digitar o nome completo da necessidade (Ex: Baixa Visão, Transtorno do Espectro Autista).</li>
+                                    <li><strong>Cancelar:</strong> Interrompe a operação e volta para a tela inicial.</li>
+                                    <li><strong>Cadastrar:</strong> Salva a nova necessidade no banco de dados.</li>
+                                </ul>
+                            </div>
+
+                            <hr>
+
+                            <h5 class="text-success fw-bold mt-3">Listar/Alterar Tipos de Necessidades Educacionais Específicas</h5>
+                            <p>Permite visualizar todas as necessidades já cadastradas na instituição. Utilize esta tela para corrigir erros de digitação na nomenclatura ou remover categorias obsoletas.</p>
+                            <p><strong>Caminho:</strong> Aba Administração → Tipos de Necessidades Educacionais Específicas → Listar/Alterar</p>
+                            <div class="text-center my-3 p-3 border rounded bg-light">
+                                <img src="print/03-listar-necessidades.png" class="img-fluid rounded shadow-sm manual-print" alt="Tela de Listagem">
+                            </div>
+                             <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Ícone Lápis (Alterar):</strong> Abre o formulário para editar o nome da necessidade.</li>
+                                    <li><strong>Ícone Lixeira (Remover):</strong> Exclui a necessidade do sistema.</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="tabAluno">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#cAluno1">
+                            <i class="bi bi-people-fill me-2"></i>Aluno
+                        </button>
+                    </h2>
+                    <div id="cAluno1" class="accordion-collapse collapse" data-bs-parent="#accGestor">
+                        <div class="accordion-body">
+                            
+                            <h5 class="text-success fw-bold mt-3">1. Novas Solicitações de Apoio</h5>
+                            <p>Caixa de entrada onde o gestor visualiza os pedidos que estão com status SUBMETIDO.</p>
+                            <p><strong>Caminho:</strong> Aba Aluno → Discentes com NEE → Novas Solicitações de Apoio</p>
+                            <div class="text-center my-3 p-3 border rounded bg-light">
+                                <img src="print/04-novas-solicitacoes.png" class="img-fluid rounded shadow-sm manual-print" alt="Tela de Novas Solicitações">
+                            </div>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Ícone Lupa:</strong> Visualizar Detalhes do pedido e documentos anexos.</li>
+                                    <li><strong>Ícone Check (Verde):</strong> Emitir Parecer Técnico (Deferir ou Indeferir).</li>
+                                </ul>
+                            </div>
+
+                            <hr>
+
+                            <h5 class="text-success fw-bold mt-3">2. Gerenciar Estudante com NEE</h5>
+                            <p>Esta funcionalidade é o painel de controle central do Gestor. Diferente da busca simples, aqui é possível realizar ações administrativas na ficha do aluno.</p>
+                            <p><strong>Caminho:</strong> Aba Aluno → Discentes com NEE → Gerenciar Estudante com NEE</p>
+                            <div class="text-center my-3 p-3 border rounded bg-light">
+                                <img src="print/06-cadastro-manual.png" class="img-fluid rounded shadow-sm manual-print" alt="Tela Gerenciar Estudante">
+                            </div>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Filtros de Busca:</strong> Nível de Ensino, Matrícula, CPF, Nome do Discente, Situação do Atendimento.</li>
+                                    <li><strong>Visualizar Detalhes (Lupa 🔍):</strong> Exibe os dados cadastrais completos da solicitação.</li>
+                                    <li><strong>Visualizar Histórico:</strong> Mostra a linha do tempo de alterações e pareceres.</li>
+                                    <li><strong>Emitir Atestado de Matrícula:</strong> Gera o documento oficial em PDF.</li>
+                                    <li><strong>Visualizar Notas:</strong> Permite monitorar o rendimento acadêmico.</li>
+                                    <li><strong>Alterar Solicitação (Lápis 📝):</strong> Usado para editar informações do parecer ou mudar o status.</li>
+                                    <li><strong>Visualizar Acompanhamentos:</strong> Lista os registros de visitas e apoios.</li>
+                                    <li><strong>Entrar em Contato:</strong> Abre a ferramenta de comunicação.</li>
+                                </ul>
+                            </div>
+
+                            <hr>
+
+                            <h5 class="text-success fw-bold mt-3">3. Avaliação e Acompanhamento ao Discente</h5>
+                            <p>Esta funcionalidade permite construir a memória institucional do apoio prestado ao aluno. É aqui que a equipe técnica registra cada visita, reunião ou adaptação.</p>
+                            <p><strong>Caminho:</strong> Aba Aluno → Acompanhamento → Avaliação e Acompanhamento ao Discente</p>
+                            <div class="text-center my-3 p-3 border rounded bg-light">
+                                <img src="print/07-registrar-atendimento.png" class="img-fluid rounded shadow-sm manual-print" alt="Tela Avaliação e Acompanhamento">
+                            </div>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Botão Cadastrar Novo:</strong> Utilizado para inserir um novo registro.</li>
+                                    <li><strong>Acompanhamentos Registrados:</strong> Tabela com o histórico.</li>
+                                    <li><strong>Data de Cadastro:</strong> Quando o atendimento foi inserido.</li>
+                                    <li><strong>Cadastrado por:</strong> Nome do responsável pelo registro.</li>
+                                    <li><strong>Conteúdo:</strong> Resumo do que foi feito.</li>
+                                </ul>
+                            </div>
+
+                            <hr>
+
+                            <h5 class="text-success fw-bold mt-3">4. Acompanhamento Acadêmico Discente</h5>
+                            <p>Permite visualizar as notas parciais, médias finais e a frequência nas disciplinas que estão em andamento.</p>
+                            <p><strong>Caminho:</strong> Aba Aluno → Acompanhamento → Acompanhamento Acadêmico Discente</p>
+                            <div class="text-center my-3 p-3 border rounded bg-light">
+                                <img src="print/08-notas-frequencia.png" class="img-fluid rounded shadow-sm manual-print" alt="Tela de Notas e Frequência">
+                            </div>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Grade de Horários:</strong> Visualização semanal.</li>
+                                    <li><strong>Notas e Frequência:</strong> Colunas com o desempenho em cada disciplina.</li>
+                                </ul>
+                            </div>
+
+                            <hr>
+
+                            <h5 class="text-success fw-bold mt-3">5. Consultar Dados do Aluno</h5>
+                            <p>Exibe a ficha cadastral completa do discente.</p>
+                            <p><strong>Caminho:</strong> Aba Aluno → Consultas → Consultar Dados do Aluno</p>
+                            <div class="text-center my-3 p-3 border rounded bg-light">
+                                <img src="print/placeholder_dados.png" class="img-fluid rounded shadow-sm manual-print" alt="Tela de Dados do Aluno">
+                            </div>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Dados Pessoais:</strong> Nome, RG, CPF.</li>
+                                    <li><strong>Dados de Ingresso:</strong> Curso, Ano, Forma de Ingresso.</li>
+                                    <li><strong>Contatos:</strong> E-mail e Telefone.</li>
+                                </ul>
+                            </div>
+
+                            <hr>
+
+                            <h5 class="text-success fw-bold mt-3">6. Editar Observações do Discente</h5>
+                            <p>Funcionalidade para manutenção de notas internas. Caso uma informação tenha sido inserida com erro ou não seja mais necessária, você pode corrigi-la.</p>
+                            <p><strong>Caminho:</strong> Aba Aluno → Discentes com NEE → Editar Observações do Discente</p>
+                            <div class="text-center my-3 p-3 border rounded bg-light">
+                                <img src="print/10-observacoes-internas.png" class="img-fluid rounded shadow-sm manual-print" alt="Tela Editar Observações">
+                            </div>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Alterar Observação (Ícone Lápis 📝):</strong> Permite editar o texto de uma anotação já salva.</li>
+                                    <li><strong>Remover Observação (Ícone Lixeira 🗑️):</strong> Exclui a anotação do sistema.</li>
+                                </ul>
+                            </div>
+
+                            <hr>
+
+                            <h5 class="text-success fw-bold mt-3">7. Gerenciar NEE de Discente</h5>
+                            <p>Permite vincular categorias de deficiência ao cadastro do aluno.</p>
+                            <p><strong>Caminho:</strong> Aba Aluno → Discentes com NEE → Gerenciar NEE de Discente</p>
+                            <div class="text-center my-3 p-3 border rounded bg-light">
+                                <img src="print/09-vincular-deficiencia.png" class="img-fluid rounded shadow-sm manual-print" alt="Tela Gerenciar NEE">
+                            </div>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Discente:</strong> Busca do aluno.</li>
+                                    <li><strong>Tipo de Necessidade:</strong> Seleção da deficiência.</li>
+                                    <li><strong>Adicionar:</strong> Botão para confirmar o vínculo.</li>
+                                </ul>
+                            </div>
+
+                            <hr>
+
+                            <h5 class="text-success fw-bold mt-3">8. Notificar Discentes</h5>
+                            <p>Envio de e-mails institucionais.</p>
+                            <p><strong>Caminho:</strong> Aba Aluno → Notificar Discentes</p>
+                            <div class="text-center my-3 p-3 border rounded bg-light">
+                                <img src="print/11.1-notificar-alunos.png" class="img-fluid rounded shadow-sm manual-print" alt="Tela Notificar Discentes">
+                            </div>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Filtros de Destinatário:</strong> Curso, Turma ou Todos os NEE.</li>
+                                    <li><strong>Assunto/Mensagem:</strong> Campos de texto do e-mail.</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="tabRel">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#cRel1">
+                            <i class="bi bi-bar-chart-fill me-2"></i>Relatórios / Consultas
+                        </button>
+                    </h2>
+                    <div id="cRel1" class="accordion-collapse collapse" data-bs-parent="#accGestor">
+                        <div class="accordion-body">
+                            
+                            <h6 class="fw-bold text-dark border-bottom pb-2 mb-3">CONSULTAS GERAIS (Dados Acadêmicos)</h6>
+
+                            <h5 class="text-success fw-bold mt-3">Alunos / Consulta Geral de Discentes</h5>
+                            <p>Pesquisa detalhada que permite usar vários filtros (como status, ano de ingresso) para encontrar dados de contato e acadêmicos.</p>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Filtros:</strong> Curso, Ano Ingresso, Situação (Ativo/Trancado).</li>
+                                </ul>
+                            </div>
+
+                            <h5 class="text-success fw-bold mt-3">Componentes Curriculares</h5>
+                            <p>Permite consultar a ementa, bibliografia e carga horária das disciplinas ofertadas pela universidade.</p>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Nível:</strong> Grau acadêmico.</li>
+                                    <li><strong>Código/Nome:</strong> Busca da disciplina.</li>
+                                </ul>
+                            </div>
+
+                            <h5 class="text-success fw-bold mt-3">Turmas</h5>
+                            <p>Informa o horário, o local da sala de aula e o professor da disciplina.</p>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Nível/Unidade:</strong> Filtros obrigatórios.</li>
+                                    <li><strong>Resultados:</strong> Local e Horário das aulas.</li>
+                                </ul>
+                            </div>
+
+                            <h5 class="text-success fw-bold mt-3">Relatório de Integralização de Currículo</h5>
+                            <p>Mostra o progresso do aluno e o que falta para concluir o curso.</p>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Dados do Discente:</strong> Matrícula ou Nome.</li>
+                                </ul>
+                            </div>
+
+                            <hr>
+
+                            <h6 class="fw-bold text-dark border-bottom pb-2 mb-3 mt-4">RELATÓRIOS NEE (Estatísticas do Setor)</h6>
+
+                            <h5 class="text-success fw-bold mt-3">Alunos com NEE por Forma de Ingresso</h5>
+                            <p>Gera estatísticas cruzando o tipo de deficiência com a modalidade de entrada na universidade (Cotas, SiSU, etc.).</p>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Ano de Ingresso:</strong> Define o recorte temporal do relatório.</li>
+                                    <li><strong>Forma de Ingresso:</strong> Permite filtrar por uma modalidade específica.</li>
+                                    <li><strong>Tipos de Necessidades:</strong> Permite selecionar uma categoria específica.</li>
+                                </ul>
+                            </div>
+
+                            <h5 class="text-success fw-bold mt-3">Alunos por Tipos de Necessidades Educacionais Específicas</h5>
+                            <p>Relatório quantitativo que agrupa os discentes por categoria (ex: Lista quantos alunos possuem Baixa Visão, quantos possuem TEA, etc.).</p>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Tipo de Necessidade:</strong> Permite selecionar uma deficiência específica ou deixar em branco para listar todas.</li>
+                                    <li><strong>Status do Discente:</strong> Filtra entre alunos Ativos, Concluídos ou Trancados.</li>
+                                </ul>
+                            </div>
+
+                             <h5 class="text-success fw-bold mt-3">Solicitações Atendidas / Discentes em Atendimento</h5>
+                            <p>Relatório de produtividade que mostra o histórico de pedidos processados pelo setor e quantos alunos estão com acompanhamento ativo no momento.</p>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Período:</strong> Data Início e Fim.</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="tabLab">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#cLab1">
+                            <i class="bi bi-person-hearts me-2"></i>Laboratório de Acessibilidade
+                        </button>
+                    </h2>
+                    <div id="cLab1" class="accordion-collapse collapse" data-bs-parent="#accGestor">
+                        <div class="accordion-body">
+                            
+                            <h5 class="text-success fw-bold mt-3">Cadastrar Acompanhante</h5>
+                            <p>Funcionalidade para cadastrar servidores ou bolsistas que atuarão no apoio.</p>
+                            <p><strong>Caminho:</strong> Aba Laboratório → Cadastrar Acompanhante</p>
+                            <div class="text-center my-3 p-3 border rounded bg-light">
+                                <img src="print/placeholder_cad_acomp.png" class="img-fluid rounded shadow-sm manual-print" alt="Tela Cadastrar Acompanhante">
+                            </div>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Buscar Servidor:</strong> Campo para digitar SIAPE ou Nome.</li>
+                                </ul>
+                            </div>
+
+                             <hr>
+
+                            <h5 class="text-success fw-bold mt-3">Listar/Alterar Acompanhante</h5>
+                            <p>Gerencia a equipe de apoio cadastrada.</p>
+                            <p><strong>Caminho:</strong> Aba Laboratório → Listar/Alterar Acompanhante</p>
+                            <div class="text-center my-3 p-3 border rounded bg-light">
+                                <img src="print/placeholder_list_acomp.png" class="img-fluid rounded shadow-sm manual-print" alt="Tela Listar Acompanhantes">
+                            </div>
+
+                            <hr>
+
+                            <h5 class="text-success fw-bold mt-3">Associar Acompanhante a Discente</h5>
+                            <p>Cria o vínculo entre o aluno e o profissional.</p>
+                            <p><strong>Caminho:</strong> Aba Laboratório → Associar Acompanhante a Discente</p>
+                            <div class="text-center my-3 p-3 border rounded bg-light">
+                                <img src="print/image_1e2a3e.png" class="img-fluid rounded shadow-sm manual-print" alt="Tela Associar Acompanhante">
+                            </div>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Selecionar Discente:</strong> Busca do aluno.</li>
+                                    <li><strong>Selecionar Acompanhante:</strong> Busca do profissional.</li>
+                                </ul>
+                            </div>
+
+                            <hr>
+
+                            <h5 class="text-success fw-bold mt-3">Listar/Alterar Associações</h5>
+                            <p>Permite visualizar e gerenciar os vínculos ativos.</p>
+                            <p><strong>Caminho:</strong> Aba Laboratório → Listar/Alterar Associações</p>
+                            <div class="text-center my-3 p-3 border rounded bg-light">
+                                <img src="print/placeholder_list_assoc.png" class="img-fluid rounded shadow-sm manual-print" alt="Tela Listar Associações">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="tabApoio">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#cApoio1">
+                            <i class="bi bi-search me-2"></i>Apoio
+                        </button>
+                    </h2>
+                    <div id="cApoio1" class="accordion-collapse collapse" data-bs-parent="#accGestor">
+                        <div class="accordion-body">
+                            
+                            <h5 class="text-success fw-bold mt-3">Discentes com NEE (Consulta Geral)</h5>
+                            <p>Esta seção do sistema é destinada à operação diária de consulta e acompanhamento. É aqui que você localizará os alunos para verificar a situação atual de seus processos e visualizar os pareceres técnicos já emitidos.</p>
+                            <p><strong>Caminho:</strong> Aba Apoio → Discentes com NEE</p>
+                            <div class="text-center my-3 p-3 border rounded bg-light">
+                                <img src="print/placeholder_apoio.png" class="img-fluid rounded shadow-sm manual-print" alt="Tela Consultar Apoio">
+                            </div>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Entendendo a Situação do Atendimento (Status):</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><span class="badge bg-warning text-dark">EM ATENDIMENTO</span> Aluno com pedido deferido e sendo acompanhado.</li>
+                                    <li><span class="badge bg-info text-dark">EM AVALIAÇÃO</span> Pedido em análise técnica.</li>
+                                    <li><span class="badge bg-secondary">ENCERRADO</span> Processo finalizado.</li>
+                                    <li><span class="badge bg-danger">INDEFERIDO</span> Pedido negado.</li>
+                                    <li><span class="badge bg-primary">SUBMETIDO</span> Novo pedido aguardando triagem.</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="tabAcomp">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#cAcomp1">
+                            <i class="bi bi-journal-text me-2"></i>Acompanhamento
+                        </button>
+                    </h2>
+                    <div id="cAcomp1" class="accordion-collapse collapse" data-bs-parent="#accGestor">
+                        <div class="accordion-body">
+                            
+                            <h5 class="text-success fw-bold mt-3">Avaliação e Acompanhamento ao Discente</h5>
+                            <p>Esta área é destinada exclusivamente aos servidores cadastrados como Acompanhantes. Sua função é permitir o acesso direto à vida acadêmica dos discentes sob sua responsabilidade, facilitando o suporte diário nas disciplinas cursadas. Através desta aba, o acompanhante consegue visualizar as turmas virtuais do discente que ele está acompanhando.</p>
+                            <div class="text-center my-3 p-3 border rounded bg-light">
+                                <img src="print/07-registrar-atendimento.png" class="img-fluid rounded shadow-sm manual-print" alt="Tela Acompanhamento">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mb-5 topico-manual perfil-coordenador" id="coord-conteudo">
+            <h3 class="topico-title text-uppercase"><i class="bi bi-briefcase-fill me-2"></i>Apoio Acadêmico (Coordenador)</h3>
+            <div class="accordion" id="accCoord">
+                
+                <div class="accordion-item" id="cCoord1">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#cCoordBody1">
+                            1. Acesso à Funcionalidade
+                        </button>
+                    </h2>
+                    <div id="cCoordBody1" class="accordion-collapse collapse show" data-bs-parent="#accCoord">
+                        <div class="accordion-body">
+                            <p>O acesso às informações de acessibilidade é feito diretamente através do Portal do Coordenador de Graduação. Para acessar, localize no menu superior a aba Aluno, passe o mouse sobre a opção Discentes com NEE e clique em Solicitações Enviadas a CAENE.</p>
+                            <p><strong>Caminho:</strong> Portal do Coordenador Graduação → Solicitações Enviadas a CAENE</p>
+                            <div class="text-center my-4">
+                                <img src="print/image_8d4429.png" class="img-fluid rounded border shadow-sm manual-print" alt="Menu Portal Coordenador">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="cCoord2">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cCoordBody2">
+                            2. Gerenciamento de Solicitações
+                        </button>
+                    </h2>
+                    <div id="cCoordBody2" class="accordion-collapse collapse" data-bs-parent="#accCoord">
+                        <div class="accordion-body">
+                            <p>Ao acessar a opção, você será direcionado para a tela de controle. É aqui que o coordenador acompanha o status dos pedidos de apoio feitos para os alunos do seu curso e realiza a gestão acadêmica desses discentes.</p>
+                            <div class="text-center my-4">
+                                <img src="print/image_8d442b.png" class="img-fluid rounded border shadow-sm manual-print" alt="Gerenciamento de Solicitações">
+                            </div>
+                            
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Aviso de Edição:</strong> O sistema exibe um alerta no topo: "Apenas as solicitações de Apoio que estiverem com a situação SUBMETIDO podem ser alteradas". Isso significa que, se a CAENE já iniciou a análise (status "Em Avaliação" ou superior), o coordenador perde a permissão de editar o pedido, restando apenas a consulta.</li>
+                                    <li><strong>Filtros de Busca:</strong>
+                                        <ul>
+                                            <li><strong>Situação da Solicitação:</strong> Utilize para filtrar os alunos conforme o andamento do processo (Submetido, Em Atendimento, Indeferido, etc.).</li>
+                                            <li><strong>Curso:</strong> Mostra o curso vinculado à sua coordenação (ex: Ciência da Computação/IEG).</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Ações:</strong>
+                                        <ul>
+                                            <li><strong>Visualizar Detalhes:</strong> Exibe o formulário completo e os documentos que foram enviados.</li>
+                                            <li><strong>Visualizar Histórico:</strong> Mostra o histórico acadêmico do discente.</li>
+                                            <li><strong>Emitir Atestado de Matrícula:</strong> Gera o comprovante de vínculo do aluno em PDF.</li>
+                                            <li><strong>Visualizar Notas:</strong> Permite monitorar o rendimento do aluno nas disciplinas atuais.</li>
+                                            <li><strong>Alterar Solicitação (Lápis 📝):</strong> Disponível apenas para pedidos novos (status "Submetido"). Use para corrigir dados antes que a CAENE avalie.</li>
+                                            <li><strong>Visualizar Acompanhamentos:</strong> Permite ler os registros das visitas e apoios pedagógicos que a equipe técnica realizou com este discente.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mb-5 topico-manual perfil-docente" id="docente-conteudo">
+            <h3 class="topico-title text-uppercase"><i class="bi bi-easel-fill me-2"></i>Na Sala de Aula (Docentes)</h3>
+            <div class="accordion" id="accDocente">
+                
+                <div class="accordion-item" id="cDoc1">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cDocBody1">
+                            1. Ciência e Notificação Inicial
+                        </button>
+                    </h2>
+                    <div id="cDocBody1" class="accordion-collapse collapse" data-bs-parent="#accDocente">
+                        <div class="accordion-body">
+                            <p>O sistema foi desenhado para garantir que o docente seja notificado ativamente sobre a presença de alunos com Necessidades Educacionais Específicas (NEE) em suas disciplinas.</p>
+                            <p>Ao acessar a Turma de uma disciplina que possua alunos com NEE matriculados, o sistema exibirá automaticamente uma janela pop-up (Termo de Ciência). Esta mensagem é obrigatória e serve para listar nominalmente quem são esses estudantes e reforçar as políticas de inclusão da UFOPA.</p>
+                            <p><strong>Caminho:</strong> Portal do Docente → Minhas Turmas no Semestre → Clicar na Turma desejada</p>
+                            <div class="text-center my-4">
+                                <img src="print/image_99766e.png" class="img-fluid rounded border shadow-sm manual-print" alt="Pop-up Termo de Ciência">
+                            </div>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Mensagem de Alerta:</strong> Informa os nomes e matrículas dos alunos com NEE presentes naquela turma específica.</li>
+                                    <li><strong>Instruções Normativas:</strong> Orienta o professor a observar os princípios de acessibilidade e consultar o parecer técnico disponível no sistema.</li>
+                                    <li><strong>Confirmação de Leitura (Checkbox):</strong> O docente deve marcar a opção "Ciente das informações prestadas acima" e clicar em Salvar. Após esse aceite, a mensagem não aparecerá mais para esta turma, pois a ciência já foi registrada.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="cDoc2">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cDocBody2">
+                            2. Visualizar Parecer Técnico e Detalhes
+                        </button>
+                    </h2>
+                    <div id="cDocBody2" class="accordion-collapse collapse" data-bs-parent="#accDocente">
+                        <div class="accordion-body">
+                            <p>Para entender qual é a necessidade do aluno e como agir pedagogicamente, o docente deve clicar sobre o ícone de acessibilidade. Isso abrirá a ficha técnica do estudante.</p>
+                            <p><strong>Caminho:</strong> Menu da Turma Virtual → Participantes → Clicar no ícone azul ao lado do nome</p>
+                            <div class="text-center my-4">
+                                <img src="print/image_997670.png" class="img-fluid rounded border shadow-sm manual-print" alt="Ícone na lista de participantes">
+                            </div>
+                             <div class="text-center my-4">
+                                <img src="print/image_9976d2.png" class="img-fluid rounded border shadow-sm manual-print" alt="Tela Parecer Técnico">
+                            </div>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela (Parecer):</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Dados do Discente:</strong> Informações básicas de contato (E-mail, Matrícula) para facilitar a comunicação direta.</li>
+                                    <li><strong>Tipos de Necessidades Educacionais Específicas:</strong> Indica a categoria da necessidade (Ex: Deficiência Múltipla, Baixa Visão, etc.).</li>
+                                    <li><strong>Parecer da CAENE:</strong> Este é o campo mais importante. Contém as orientações pedagógicas e o parecer técnico sobre as adaptações necessárias para aquele aluno.</li>
+                                    <li><strong>Anexos:</strong> Links para baixar documentos complementares (PDFs com diretrizes ou laudos, se disponibilizados).</li>
+                                    <li><strong>Enviar Mensagem para a CAENE:</strong> Link direto para abrir um canal de comunicação com a Coordenação de Acessibilidade, caso o professor tenha dúvidas ou precise de suporte específico para atender o aluno.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mb-5 topico-manual perfil-discente" id="discente-conteudo">
+            <h3 class="topico-title text-uppercase"><i class="bi bi-mortarboard-fill me-2"></i>Autoatendimento (Discente)</h3>
+            <div class="accordion" id="accDiscente">
+                
+                <div class="accordion-item" id="cDisc1">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cDiscBody1">
+                            1. Onde eu encontro essa opção?
+                        </button>
+                    </h2>
+                    <div id="cDiscBody1" class="accordion-collapse collapse" data-bs-parent="#accDiscente">
+                        <div class="accordion-body">
+                            <p>Todo o processo é feito pelo seu Portal do Discente, garantindo sua autonomia. Você não precisa ir presencialmente ao setor para dar entrada no pedido.</p>
+                            <ol>
+                                <li>Acesse o SIGAA com seu login e senha.</li>
+                                <li>No menu superior direito, procure pelo botão "Outros".</li>
+                                <li>Passe o mouse sobre a opção "Necessidades Educacionais Específicas".</li>
+                                <li>Clique na opção de "Solicitar Apoio".</li>
+                            </ol>
+                            <div class="text-center my-4">
+                                <img src="print/image_99f6cd.png" class="img-fluid rounded border shadow-sm manual-print" alt="Menu Outros no Portal Discente">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="cDisc2">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cDiscBody2">
+                            2. Preenchimento da Solicitação
+                        </button>
+                    </h2>
+                    <div id="cDiscBody2" class="accordion-collapse collapse" data-bs-parent="#accDiscente">
+                        <div class="accordion-body">
+                            
+                            <h6 class="mt-4">Preenchimento da Solicitação</h6>
+                            <p>Nesta etapa, você informará qual é a sua necessidade específica e anexará os documentos médicos ou técnicos necessários.</p>
+                            <div class="text-center my-4">
+                                <img src="print/image_99f6d0.png" class="img-fluid rounded border shadow-sm manual-print" alt="Formulário de Solicitação">
+                            </div>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento da tela:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>Dados Pessoais:</strong> O sistema já traz preenchidos seus dados de matrícula, curso e contato.</li>
+                                    <li><strong>Tipos de Necessidades Educacionais Específicas:</strong> Marque as opções que correspondem à sua condição (Ex: Deficiência Visual/Baixa Visão, Transtorno do Espectro Autista, Deficiência Física, etc.). É possível marcar mais de uma opção.</li>
+                                    <li><strong>Justificativa:</strong> Use este espaço para explicar, com suas palavras, qual tipo de recurso ou adaptação você precisa na sala de aula para acompanhar as atividades.</li>
+                                    <li><strong>Documento Comprobatório:</strong> Clique em "Escolher Arquivo" para fazer o upload do seu laudo médico ou parecer técnico digitalizado (PDF ou Imagem). <strong>Este passo é obrigatório.</strong></li>
+                                    <li><strong>Botão Cadastrar:</strong> Envia sua solicitação para análise da equipe da CAENE.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="cDisc3">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cDiscBody3">
+                            3. Acompanhar Solicitação
+                        </button>
+                    </h2>
+                    <div id="cDiscBody3" class="accordion-collapse collapse" data-bs-parent="#accDiscente">
+                        <div class="accordion-body">
+                            <p>Depois de enviar, você deve acompanhar o andamento da sua solicitação pelo próprio sistema.</p>
+                            <p><strong>Caminho:</strong> Portal do Discente → Menu Outros → Necessidades Educacionais Específicas → Solicitar Apoio</p>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Situação:</strong>
+                                <ul class="mb-0 mt-2">
+                                    <li><strong>SUBMETIDO:</strong> Seu pedido foi enviado com sucesso e aguarda análise da equipe.</li>
+                                    <li><strong>EM ATENDIMENTO:</strong> Seu pedido foi aceito e você já está inserido no programa de acompanhamento.</li>
+                                    <li><strong>INDEFERIDO:</strong> O pedido não foi aceito no momento (geralmente por falta de documentação). Verifique a justificativa no sistema.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="cDisc4">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cDiscBody4">
+                            4. Entrar em Contato
+                        </button>
+                    </h2>
+                    <div id="cDiscBody4" class="accordion-collapse collapse" data-bs-parent="#accDiscente">
+                        <div class="accordion-body">
+                            <p>Se você tiver alguma dúvida antes de enviar a solicitação ou quiser conversar com o setor, existe um canal direto para isso.</p>
+                            <p><strong>Caminho:</strong> Portal do Discente → Menu Outros → Necessidades Educacionais Específicas → Entrar em Contato</p>
+                            <div class="alert alert-light border ms-2">
+                                <strong>Detalhamento:</strong>
+                                <p class="mb-0">Ao clicar nesta opção, abrirá uma caixa de mensagem simples. Escreva sua dúvida ou solicitação e envie. A resposta será encaminhada para o seu e-mail cadastrado ou para a caixa de mensagens do SIGAA.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="noResults" class="text-center py-5 d-none">
+            <i class="bi bi-search display-1 text-muted opacity-25"></i>
+            <h4 class="mt-3 text-muted">Nenhum tópico encontrado.</h4>
+        </div>
+
+    </div>
+
+    <footer class="py-4 text-center bg-dark text-white mt-auto">
+        <div class="container">
+            <p class="mb-1 text-white-50 small">Desenvolvido para o</p>
+            <h6 class="text-white fw-bold">Núcleo de Acessibilidade da UFOPA</h6>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
